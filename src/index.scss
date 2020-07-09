@@ -1,0 +1,28 @@
+$title-color: white;
+$table-background-color: grey;
+$table-row-active-background-color: #B9675B;
+// $table-background-color: #936363;
+@import "bulma/sass/utilities/_all.sass";
+@import "bulma/sass/grid/columns.sass";
+@import "bulma/sass/elements/title.sass";
+@import "bulma/sass/elements/button.sass";
+@import "bulma/sass/elements/table.sass";
+@import "bulma/sass/layout/_all.sass";
+
+body {
+  background-color: #444444;
+}
+
+.metric_1 {
+  justify-content: center;
+  margin-left: 20em;
+  margin-right: 20em;
+}
+
+.graph{
+  padding-left: 35%;
+}
+
+.graph_pie {
+  padding-left: 25%;
+}
