@@ -1,10 +1,9 @@
 import React from 'react';
-import debts from '../data/debts';
 import {
   BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ReferenceLine,
 } from 'recharts';
 
-const Debts = () => {
+const Debts = ({ debts }) => {
   const parsed_data = debts.map(debt => {
     const obj = {id: `Grupo: ${debt.group_id}`, deuda:debt.debt};
     return obj;
@@ -13,7 +12,7 @@ const Debts = () => {
     <div className="container">
       <p className="title is-5">Deuda a otros Grupos</p>
       <div className="graph">
-      <BarChart width={600} height={300} data={parsed_data}
+      <BarChart width={1800} height={300} data={parsed_data}
             >
        <CartesianGrid strokeDasharray="3 3"/>
        <XAxis dataKey="id"/>

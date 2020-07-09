@@ -1,16 +1,15 @@
 import React from 'react';
-import { muni, groups } from '../data/ocs';
 import {
-  PieChart, Pie, Legend, Tooltip,
+  PieChart, Pie, Tooltip,
 } from 'recharts';
 
-const OCs = () => {
-  const acepted_muni = (muni.acepted/muni.total).toFixed(2)*100;
-  const completed_muni = (muni.completed/muni.acepted).toFixed(2)*100;
-  const completed_groups = (groups.completed/groups.acepted).toFixed(2)*100;
-  const data1 = [{name: 'Aceptadas (%)', value: parseFloat(acepted_muni)}, {name:'Rechazadas (%)', value:100-acepted_muni}]
-  const data2 = [{name: 'Completadas (%)', value: completed_muni}, {name:'No Completadas (%)', value:100-completed_muni}]
-  const data3 = [{name: 'Completadas (%)', value: completed_groups}, {name:'No Completadas (%)', value:100-completed_groups}]
+const OCs = ({ orders }) => {
+  const acepted_muni = Math.round(((orders.muni.acepted + orders.muni.completed)/orders.muni.total)*100);
+  const completed_muni = Math.round((orders.muni.completed/(orders.muni.acepted + orders.muni.completed))*100);
+  const completed_groups = Math.round((orders.grupos.completed/(orders.grupos.acepted + orders.grupos.completed))*100);
+  const data1 = [{name: 'Aceptadas (%)', value: acepted_muni}, {name:'Rechazadas (%)', value:(100-acepted_muni)}]
+  const data2 = [{name: 'Completadas (%)', value: completed_muni}, {name:'No Completadas (%)', value:(100-completed_muni)}]
+  const data3 = [{name: 'Completadas (%)', value: completed_groups}, {name:'No Completadas (%)', value:(100-completed_groups)}]
   return (
     <div className="container">
       <p className="title is-5">Cumplimiento Órdenes de Compra</p>

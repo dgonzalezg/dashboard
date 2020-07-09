@@ -1,37 +1,65 @@
-import axios from 'axios';
-axios.defaults.baseURL = 'http://pandemia8.ing.puc.cl/';
-axios.defaults.headers.post['Content-Type'] ='application/json;charset=utf-8';
-axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
 
+const baseURL = 'http://pandemia8.ing.puc.cl/';
 
 export async function get_pending_orders() {
-  const orders = await axios.get('po');
-  return orders;
-}
-
-export async function get_stock_available() {
-  const stocks = await axios.get('sph');
-  return stocks;
-}
-
-export async function get_stock_estimate() {
-  //const stocks = await axios.get('se');
-  const stocks = await fetch('http://pandemia8.ing.puc.cl/',{
+  const orders = await fetch(`${baseURL}po/`,{
     method: 'GET',
     mode: 'cors',
     headers: {
       'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': true,
-    }});
+    }}).then((res) => res.json());
+  return orders;
+}
+
+export async function get_stock_available() {
+  const stocks = await fetch(`${baseURL}sph/`,{
+    method: 'GET',
+    mode: 'cors',
+    headers: {
+      'Content-Type': 'application/json',
+    }}).then((res) => res.json());
+  
+  return stocks;
+}
+
+export async function get_stock_estimate() {
+  const stocks = await fetch(`${baseURL}se/`,{
+    method: 'GET',
+    mode: 'cors',
+    headers: {
+      'Content-Type': 'application/json',
+    }}).then((res) => res.json());
+  
   return stocks;
 }
 
 export async function get_debts() {
-  const debts = await axios.get('debt');
+  const debts = await fetch(`${baseURL}debt/`,{
+    method: 'GET',
+    mode: 'cors',
+    headers: {
+      'Content-Type': 'application/json',
+    }}).then((res) => res.json());
   return debts;
 }
 
 export async function get_boxes_deliveres() {
-  const boxes = await axios.get('debox');
+  const boxes = await fetch(`${baseURL}debox/`,{
+    method: 'GET',
+    mode: 'cors',
+    headers: {
+      'Content-Type': 'application/json',
+    }}).then((res) => res.json());
   return boxes;
+}
+
+export async function get_compliance() {
+  const orders = await fetch(`${baseURL}compliance/`,{
+    method: 'GET',
+    mode: 'cors',
+    headers: {
+      'Content-Type': 'application/json',
+    }}).then((res) => res.json());
+  
+  return orders;
 }

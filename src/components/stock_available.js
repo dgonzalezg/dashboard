@@ -1,21 +1,29 @@
 import React , { useState } from 'react';
 import {
-  LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend,
+  LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend
 } from 'recharts';
-import { productos } from '../data/products';
+import { productos, cajas } from '../data/dicts';
+import moment from 'moment';
 
 const AvailableStock = ({stock}) => {
-  console.log(stock);
+  const returnName = (sku) => {
+    const products_key = Object.keys(productos);
+    if (products_key.includes(sku)) {
+      return productos[sku][0];
+    }
+    return cajas[sku]['Nombre'];
+  }  
   const [currentSKU, setSKU] = useState(stock[0]);
   const parsed_data = currentSKU.data.map(data => {
-    const obj = {time: data.time, "Cantidad":  data.quantity};
-    return obj
+    const obj = {time: moment(data.time).format('h:mm'), "Cantidad":  data.quantity};
+    return obj;
   })
   return (
     <div className="container">
-      <p className="title is-5">Stock Disponible</p>
       <div className="columns">
         <div className="column is-half">
+        <p className="title is-5">Stock Disponible</p>
+        <div className="table-container">
         <table className="table is-fullwidth is-hoverable">
         <thead>
           <tr>
@@ -26,7 +34,7 @@ const AvailableStock = ({stock}) => {
           {stock.map(stock => {
             return (
               <tr className={stock === currentSKU ? 'is-selected':''}key={stock.sku} onClick={() => setSKU(stock)}>
-                <td>{productos[stock.sku][0]}</td>
+                <td>{returnName(stock.sku)}</td>
               </tr>
             
             );
@@ -34,17 +42,20 @@ const AvailableStock = ({stock}) => {
         </tbody>
         </table>
         </div>
+        </div>
         <div className="column">
           <div className="graph">
-            <LineChart width={600} height={300} data={parsed_data}
+        <p className="title is-5">{returnName(currentSKU.sku)}</p>
+       
+            <LineChart width={868} height={400} data={parsed_data}
                 margin={{top: 5, right: 30, left: 20, bottom: 5}}>
-          <XAxis dataKey="name"/>
+          <XAxis dataKey="time"/>
           <YAxis/>
           <CartesianGrid strokeDasharray="3 3"/>
           <Tooltip/>
           <Legend />
           <Line type="monotone" dataKey="Cantidad" stroke="#B9675B" activeDot={{r: 8}}/>
-          </LineChart>  
+          </LineChart>
           </div>
           
         </div>

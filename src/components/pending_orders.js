@@ -1,14 +1,12 @@
 import React from 'react';
-import pending_orders from '../data/pending_order';
-import { productos } from '../data/products';
+import { productos, origin } from '../data/dicts';
 
-const PendingOrders = () => {
-  const orders = pending_orders;
+const PendingOrders = ({ orders }) => {
+
   return (
-    
-      
-      <div className="table-container is-centered metric_1">
+    <div className="container">
       <p className="title is-5">Total de Ordenes pendientes: {orders.length}</p>
+    <div className="table-container is-centered metric_1">
   <table className="table is-centered is-fullwidth is-hoverable">
     <thead>
       <tr>
@@ -20,16 +18,18 @@ const PendingOrders = () => {
     <tbody>
       {orders.map(order => {
         return (
-          <tr key={order.id}>
+          <tr key={order.order_id}>
             <td>{productos[order.sku][0]}</td>
             <td>{order.quantity}</td>
-            <td>{order.origin}</td>
+            <td>{origin[order.origin]}</td>
           </tr>
         );
       })}
     </tbody>
   </table>
 </div>
+    </div>
+    
     
   );
 }

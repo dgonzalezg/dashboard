@@ -33,3 +33,22 @@ export const productos = {1001: ['Arroz 1 Kg', 'Bolsa 1 kg', 0.0, 980.0, 0.0, 3.
         1035: ['Té caja', 'Caja 20 unidades', 0.0, 490.0, 0.0, 4.0, 720.0, 24.0, 30.0, '2,7,10,11,13,15', 6.0],
         1036: ['Té caja grande', 'Caja 100 unidades', 0.0, 2390.0, 0.0, 3.0, 720.0, 8.0, 10.0, '1,2,3,7,11,16', 6.0],
         1307: ['Té hierbas caja', 'Caja 20 unidades', 0.0, 650.0, 0.0, 2.0, 720.0, 24.0, 30.0, '1,2,3,4,10,16', 6.0]}
+
+
+export const cajas = {
+        "10002": {'Nombre': 'Caja XL', 'Precio Venta': 75990, 'Duracion': 720, 'Lote': 1, 'Tiempo Produccion': 50}, 
+        "10003": {'Nombre': 'Caja low-carbs', 'Precio Venta': 26320, 'Duracion': 720, 'Lote': 2, 'Tiempo Produccion': 20}, 
+        "10004": {'Nombre': 'Caja pequeña', 'Precio Venta': 13290, 'Duracion': 720, 'Lote': 4, 'Tiempo Produccion': 10}, 
+        "10005": {'Nombre': 'Caja desayuno', 'Precio Venta': 21990, 'Duracion': 720, 'Lote': 1, 'Tiempo Produccion': 20}, 
+        "10006": {'Nombre': 'Caja panadera', 'Precio Venta': 54870, 'Duracion': 720, 'Lote': 1, 'Tiempo Produccion': 30}, 
+        "10007": {'Nombre': 'Caja estándar 1', 'Precio Venta': 29990, 'Duracion': 720, 'Lote': 3, 'Tiempo Produccion': 40}, 
+        "10008": {'Nombre': 'Caja estándar 2', 'Precio Venta': 29990, 'Duracion': 720, 'Lote': 3, 'Tiempo Produccion': 30}, 
+        "10009": {'Nombre': 'Caja estándar 3', 'Precio Venta': 29990, 'Duracion': 720, 'Lote': 3, 'Tiempo Produccion': 30}, 
+        "10010": {'Nombre': 'Caja estándar 4', 'Precio Venta': 29990, 'Duracion': 720, 'Lote': 3, 'Tiempo Produccion': 30}, 
+        "10011": {'Nombre': 'Caja estándar 5', 'Precio Venta': 29990, 'Duracion': 720, 'Lote': 3, 'Tiempo Produccion': 40}, 
+        "10012": {'Nombre': 'Caja energía', 'Precio Venta': 28730, 'Duracion': 720, 'Lote': 2, 'Tiempo Produccion': 20},
+       }
+
+export const origin = { "b2b": "Grupos", 
+                        "ftp": "Municipalidad"
+                        }
